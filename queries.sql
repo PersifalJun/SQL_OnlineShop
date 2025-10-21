@@ -15,7 +15,7 @@ WHERE p.category IN ('Natural milk products','Meat')
 ORDER BY p.product_price DESC;
 
 --3. Вывод сумму продуктов для каждой категории
-SELECT SUM(p.product_price) AS total_price
+SELECT p.category,SUM(p.product_price) AS total_price
 FROM products AS p
 GROUP BY p.category
 HAVING SUM(p.product_price) > 90;
@@ -40,7 +40,7 @@ WHERE order_name = 'MeatOrder';
 
 --6. Сначала удаление из таблицы orders_items, а потом уже только из products
 DELETE FROM orders_items AS oi
-WHERE OI.product_id = 1;
+WHERE oi.product_id = 1;
 
 DELETE FROM products AS p
 WHERE p.product_price =200;
